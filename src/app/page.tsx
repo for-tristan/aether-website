@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import Image from "next/image";
 
-const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/latest";
+const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.2.0/Aether-Setup-1.2.0.exe";
 const SOURCE_URL = "https://github.com/for-tristan/aether-browser";
-
 const features = [
-  { icon: "\u2727", title: "Clarity by design", desc: "A clean, liquid-glass interface keeps the web at the center. Floating pill tabs, page-tint color sampling, and zero clutter." },
-  { icon: "\u2301", title: "Fluid by nature", desc: "Move between pages and tabs with smooth animations. Tab closing, opening, and switching all feel seamless." },
-  { icon: "\u25C8", title: "Your space, your way", desc: "Onboarding wizard lets you pick your name, background, and default browser. Personalized from the first launch." },
-  { icon: "\u26E8", title: "Privacy in mind", desc: "Blocks 150+ ad/tracker domains. Strips tracking cookies. Prevents referrer leakage. DNT + GPC headers on every request." },
-  { icon: "\u2318", title: "Tools within reach", desc: "Built-in password manager, task manager, download manager with pause/resume, and find-in-page with regex support." },
-  { icon: "\u2726", title: "Ready for what\u2019s next", desc: "Auto-updates download in the background. Anti-fingerprinting protection. Per-site zoom persistence. Tab groups." },
+  { icon: "\u2727", title: "Clarity by design", desc: "A liquid-glass interface with floating pill tabs, page-tint color sampling, and a frameless window that adapts to every page you visit." },
+  { icon: "\u2301", title: "Fluid by nature", desc: "Tab animations, drag-to-reorder, pin/mute, close-to-left/right, duplicate, and reopen closed tabs. Every interaction feels effortless." },
+  { icon: "\u25C8", title: "Your space, your way", desc: "5-step onboarding wizard: pick your name, background (gradient waves or custom wallpaper), and set Aether as your default browser." },
+  { icon: "\u26E8", title: "Privacy in mind", desc: "Blocks 150+ ad/tracker domains, strips tracking cookies, prevents referrer leakage, sends DNT + GPC headers, and blocks WebAuthn passkey prompts." },
+  { icon: "\u2318", title: "Tools within reach", desc: "Encrypted password manager, task manager (Shift+Esc), download manager with pause/resume, find-in-page with regex, per-site zoom persistence." },
+  { icon: "\u2726", title: "Ready for what\u2019s next", desc: "Auto-updates download in the background. Anti-fingerprinting (canvas, WebGL, navigator, audio, timezone, WebRTC). Local favicon cache." },
 ];
 
 const stats = [
@@ -21,34 +21,31 @@ const stats = [
   { strong: "100%", label: "Your browsing, your control" },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 0.12], [0, -60]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.12], [1, 0.95]);
 
-  const handleDownload = () => window.open(DOWNLOAD_URL, "_blank");
+  const featuresRef = useRef(null);
+  const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
 
   return (
     <>
       <div className="page-glow" />
       <div className="noise" />
 
-      {/* Header */}
+      {/* Header — logo + name left, nav links center, download + github right */}
       <header>
         <div className="wrap navbar">
           <a className="brand" href="#home" aria-label="Aether home">
-            <svg className="logo" viewBox="0 0 100 100" aria-hidden="true">
-              <defs>
-                <linearGradient id="lg" x2="1" y2="1">
-                  <stop stopColor="#fff" />
-                  <stop offset=".58" stopColor="#dce5ff" />
-                  <stop offset="1" stopColor="#899ccf" />
-                </linearGradient>
-              </defs>
-              <path d="M12 70 39 20Q48 4 59 20L88 70Q93 82 81 82 75 82 71 74L50 36Q48 32 45 38L25 74Q19 85 10 79 5 76 12 70Z" fill="url(#lg)" />
-              <path d="M13 70Q35 58 59 49 77 42 89 51 97 58 83 66 62 77 30 84" fill="none" stroke="#f7f9ff" strokeWidth="7" strokeLinecap="round" opacity=".85" />
-            </svg>
+            <Image src="/aether-logo.png" alt="Aether" width={42} height={42} className="logo" priority />
             Aether
           </a>
           <nav className={`navlinks ${menuOpen ? "mobile-open" : ""}`}>
@@ -57,8 +54,17 @@ export default function Home() {
             <a href="#performance" onClick={() => setMenuOpen(false)}>Performance</a>
             <a href="#download" onClick={() => setMenuOpen(false)}>Download</a>
           </nav>
-          <a className="nav-cta" href="#download">Download <span>&#8595;</span></a>
-          <button className="menu-toggle" aria-label="Open menu" onClick={() => setMenuOpen(!menuOpen)}>&#9776;</button>
+          <div className="nav-right">
+            <a className="github-link" href={SOURCE_URL} target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+            <a className="nav-cta" href={DOWNLOAD_URL} target="_blank" rel="noopener">
+              Download <span>&#8595;</span>
+            </a>
+            <button className="menu-toggle" aria-label="Open menu" onClick={() => setMenuOpen(!menuOpen)}>&#9776;</button>
+          </div>
         </div>
       </header>
 
@@ -66,22 +72,13 @@ export default function Home() {
         {/* Hero */}
         <motion.section
           className="wrap hero"
-          style={{ opacity: heroOpacity, y: heroY }}
+          style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
         >
           <div className="hero-copy">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="pill"
-            >
-              <span className="dot" />
-              A next-generation browser
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               Aether
             </motion.h1>
@@ -89,7 +86,7 @@ export default function Home() {
               className="tagline"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
+              transition={{ duration: 0.8, delay: 0.35 }}
             >
               Browse beyond limits.
             </motion.p>
@@ -97,21 +94,11 @@ export default function Home() {
               className="hero-desc"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             >
               A faster, cleaner and more private browsing experience.<br />
               Built on Chromium with anti-fingerprinting, tracker blocking, and a liquid-glass interface.
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.65 }}
-            >
-              <a className="button" href="#download">
-                <span>&#8595;</span> Download Aether <span className="arrow">&#8250;</span>
-              </a>
-              <p className="platforms">Available for Windows &middot; v1.2.0 &middot; Auto-updates included</p>
-            </motion.div>
           </div>
 
           {/* 3D Browser mockup */}
@@ -119,7 +106,7 @@ export default function Home() {
             className="hero-art"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.2, 0.7, 0.2, 1] }}
           >
             <div className="orb one" />
             <div className="orb two" />
@@ -141,17 +128,7 @@ export default function Home() {
                 <div className="browser-screen">
                   <div className="screen-glow" />
                   <div className="screen-wave" />
-                  <svg className="screen-logo" viewBox="0 0 100 100" aria-hidden="true">
-                    <defs>
-                      <linearGradient id="cl" x2="1" y2="1">
-                        <stop stopColor="#fff" />
-                        <stop offset=".6" stopColor="#dbe5ff" />
-                        <stop offset="1" stopColor="#8298d2" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M12 70 39 20Q48 4 59 20L88 70Q93 82 81 82 75 82 71 74L50 36Q48 32 45 38L25 74Q19 85 10 79 5 76 12 70Z" fill="url(#cl)" />
-                    <path d="M13 70Q35 58 59 49 77 42 89 51 97 58 83 66 62 77 30 84" fill="none" stroke="#f7f9ff" strokeWidth="7" strokeLinecap="round" />
-                  </svg>
+                  <Image src="/aether-logo.png" alt="Aether" width={115} height={115} className="screen-logo" />
                 </div>
               </div>
               <div className="device-side" />
@@ -166,62 +143,111 @@ export default function Home() {
           <span>Scroll to explore</span>
         </div>
 
-        {/* Features */}
-        <section className="section" id="features">
+        {/* Features — staggered scroll-in with alternating layout */}
+        <section className="section" id="features" ref={featuresRef}>
           <div className="wrap">
             <motion.div
               className="section-head"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              initial="hidden"
+              animate={featuresInView ? "visible" : "hidden"}
+              variants={fadeUp}
               transition={{ duration: 0.6 }}
             >
               <div className="kicker">Made for the way you browse</div>
               <h2>Everything you need.<br />Nothing in your way.</h2>
               <p>Aether brings your everyday browsing into focus with a thoughtful experience that feels fast, calm and effortless.</p>
             </motion.div>
-            <div className="feature-grid">
+
+            {/* Alternating feature rows instead of boring grid */}
+            <div className="feature-rows">
               {features.map((f, i) => (
-                <motion.article
+                <motion.div
                   key={i}
-                  className="feature-card"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className={`feature-row ${i % 2 === 1 ? "reverse" : ""}`}
+                  initial={{ opacity: 0, x: i % 2 === 1 ? 60 : -60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: [0.2, 0.7, 0.2, 1] }}
                 >
-                  <div className="feature-icon">{f.icon}</div>
-                  <h3>{f.title}</h3>
-                  <p>{f.desc}</p>
-                </motion.article>
+                  <div className="feature-visual">
+                    <div className="feature-icon-large">{f.icon}</div>
+                    <div className="feature-glow-orb" />
+                  </div>
+                  <div className="feature-content">
+                    <h3>{f.title}</h3>
+                    <p>{f.desc}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Privacy Split */}
-        <section className="section" id="privacy">
-          <div className="wrap split">
+        {/* Privacy — full-width immersive section */}
+        <section className="section privacy-section" id="privacy">
+          <motion.div
+            className="privacy-bg"
+            initial={{ scale: 1.1, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          />
+          <div className="wrap">
             <motion.div
-              className="visual-card"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="privacy-content"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="privacy-orb"><span>&#9671;</span></div>
-            </motion.div>
-            <motion.div
-              className="split-copy"
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.15 }}
+              transition={{ duration: 0.8 }}
             >
               <div className="kicker">Your web, your rules</div>
               <h2>A quieter kind of privacy.</h2>
-              <p>Your browser should work for you. Aether blocks 150+ tracker domains, strips tracking cookies, prevents referrer leakage, and sends DNT + GPC headers on every request.</p>
-              <p>Anti-fingerprinting protection overrides canvas, WebGL, navigator, audio, fonts, timezone, and WebRTC APIs \u2014 so you blend in with the crowd. No unique fingerprint. No tracking.</p>
+              <div className="privacy-grid">
+                <motion.div
+                  className="privacy-item"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <div className="privacy-icon">&#128737;</div>
+                  <h4>Tracker Blocking</h4>
+                  <p>150+ ad and tracker domains blocked at the network level. Tracking parameters stripped from URLs.</p>
+                </motion.div>
+                <motion.div
+                  className="privacy-item"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="privacy-icon">&#128274;</div>
+                  <h4>Encrypted Passwords</h4>
+                  <p>Local XOR encryption with autofill. No cloud sync. Your credentials never leave your device.</p>
+                </motion.div>
+                <motion.div
+                  className="privacy-item"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <div className="privacy-icon">&#128064;</div>
+                  <h4>Anti-Fingerprinting</h4>
+                  <p>Canvas noise, WebGL spoofing, navigator overrides, audio distortion, timezone masking, WebRTC IP leak prevention.</p>
+                </motion.div>
+                <motion.div
+                  className="privacy-item"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="privacy-icon">&#127760;</div>
+                  <h4>DNT + GPC Signals</h4>
+                  <p>Do Not Track and Global Privacy Control headers sent on every request. Third-party cookies stripped.</p>
+                </motion.div>
+              </div>
               <a className="text-link" href="#download">Discover Aether <span>&#8599;</span></a>
             </motion.div>
           </div>
@@ -246,10 +272,10 @@ export default function Home() {
                 <motion.div
                   key={i}
                   className="stat"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  transition={{ duration: 0.5, delay: i * 0.15, ease: [0.34, 1.56, 0.64, 1] }}
                 >
                   <strong>{s.strong}</strong>
                   <span>{s.label}</span>
@@ -272,9 +298,9 @@ export default function Home() {
               <div className="kicker">Your next browser is here</div>
               <h2>Make room for Aether.</h2>
               <p>Step into a cleaner, more considered browsing experience. Free, with automatic updates.</p>
-              <button className="button" onClick={handleDownload}>
+              <a className="button" href={DOWNLOAD_URL} target="_blank" rel="noopener">
                 Get Aether <span className="arrow">&#8250;</span>
-              </button>
+              </a>
               <div className="os-list">
                 <span>Windows 10/11</span>
                 <span>v1.2.0</span>
