@@ -7,12 +7,10 @@ import Image from "next/image";
 const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.2.0/Aether-Setup-1.2.0.exe";
 const SOURCE_URL = "https://github.com/for-tristan/aether-browser";
 const features = [
-  { icon: "\u2727", title: "Clarity by design", desc: "A liquid-glass interface with floating pill tabs, page-tint color sampling, and a frameless window that adapts to every page you visit." },
-  { icon: "\u2301", title: "Fluid by nature", desc: "Tab animations, drag-to-reorder, pin/mute, close-to-left/right, duplicate, and reopen closed tabs. Every interaction feels effortless." },
-  { icon: "\u25C8", title: "Your space, your way", desc: "5-step onboarding wizard: pick your name, background (gradient waves or custom wallpaper), and set Aether as your default browser." },
-  { icon: "\u26E8", title: "Privacy in mind", desc: "Blocks 150+ ad/tracker domains, strips tracking cookies, prevents referrer leakage, sends DNT + GPC headers, and blocks WebAuthn passkey prompts." },
-  { icon: "\u2318", title: "Tools within reach", desc: "Encrypted password manager, task manager (Shift+Esc), download manager with pause/resume, find-in-page with regex, per-site zoom persistence." },
-  { icon: "\u2726", title: "Ready for what\u2019s next", desc: "Auto-updates download in the background. Anti-fingerprinting (canvas, WebGL, navigator, audio, timezone, WebRTC). Local favicon cache." },
+  { icon: "\u2727", title: "Clarity by design", desc: "A clean, considered interface that keeps the web at the center and distractions out of your way." },
+  { icon: "\u2301", title: "Fluid by nature", desc: "Move between pages and tabs with a browsing experience designed to feel seamless." },
+  { icon: "\u26E8", title: "Privacy in mind", desc: "Blocks 150+ ad and tracker domains. Strips tracking cookies. Prevents referrer leakage. Sends DNT and GPC headers on every request." },
+  { icon: "\u2318", title: "Tools within reach", desc: "Encrypted password manager, task manager, download manager with pause and resume, and find-in-page with regex support." },
 ];
 
 const stats = [
@@ -45,7 +43,7 @@ export default function Home() {
       <header>
         <div className="wrap navbar">
           <a className="brand" href="#home" aria-label="Aether home">
-            <Image src="/aether-logo.png" alt="Aether" width={42} height={42} className="logo" priority />
+            <Image src="/aether-logo.png" alt="Aether" width={42} height={53} className="logo" priority />
             Aether
           </a>
           <nav className={`navlinks ${menuOpen ? "mobile-open" : ""}`}>
@@ -56,8 +54,8 @@ export default function Home() {
           </nav>
           <div className="nav-right">
             <a className="github-link" href={SOURCE_URL} target="_blank" rel="noopener" aria-label="GitHub">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
               </svg>
             </a>
             <a className="nav-cta" href={DOWNLOAD_URL} target="_blank" rel="noopener">
@@ -97,7 +95,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               A faster, cleaner and more private browsing experience.<br />
-              Built on Chromium with anti-fingerprinting, tracker blocking, and a liquid-glass interface.
+              Built on Chromium.
             </motion.p>
           </div>
 
@@ -128,7 +126,7 @@ export default function Home() {
                 <div className="browser-screen">
                   <div className="screen-glow" />
                   <div className="screen-wave" />
-                  <Image src="/aether-logo.png" alt="Aether" width={115} height={115} className="screen-logo" />
+                  <Image src="/aether-logo.png" alt="Aether" width={115} height={146} className="screen-logo" />
                 </div>
               </div>
               <div className="device-side" />
@@ -137,11 +135,6 @@ export default function Home() {
             <div className="ribbon" />
           </motion.div>
         </motion.section>
-
-        <div className="scroll-hint">
-          <span className="mouse" />
-          <span>Scroll to explore</span>
-        </div>
 
         {/* Features — staggered scroll-in with alternating layout */}
         <section className="section" id="features" ref={featuresRef}>
@@ -153,7 +146,6 @@ export default function Home() {
               variants={fadeUp}
               transition={{ duration: 0.6 }}
             >
-              <div className="kicker">Made for the way you browse</div>
               <h2>Everything you need.<br />Nothing in your way.</h2>
               <p>Aether brings your everyday browsing into focus with a thoughtful experience that feels fast, calm and effortless.</p>
             </motion.div>
@@ -210,7 +202,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <div className="privacy-icon">&#128737;</div>
+                  <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                   <h4>Tracker Blocking</h4>
                   <p>150+ ad and tracker domains blocked at the network level. Tracking parameters stripped from URLs.</p>
                 </motion.div>
@@ -221,7 +213,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <div className="privacy-icon">&#128274;</div>
+                  <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                   <h4>Encrypted Passwords</h4>
                   <p>Local XOR encryption with autofill. No cloud sync. Your credentials never leave your device.</p>
                 </motion.div>
@@ -232,7 +224,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <div className="privacy-icon">&#128064;</div>
+                  <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
                   <h4>Anti-Fingerprinting</h4>
                   <p>Canvas noise, WebGL spoofing, navigator overrides, audio distortion, timezone masking, WebRTC IP leak prevention.</p>
                 </motion.div>
@@ -243,7 +235,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                  <div className="privacy-icon">&#127760;</div>
+                  <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                   <h4>DNT + GPC Signals</h4>
                   <p>Do Not Track and Global Privacy Control headers sent on every request. Third-party cookies stripped.</p>
                 </motion.div>
@@ -304,8 +296,6 @@ export default function Home() {
               <div className="os-list">
                 <span>Windows 10/11</span>
                 <span>v1.2.0</span>
-                <span>~85 MB</span>
-                <span>Auto-updates</span>
               </div>
             </motion.div>
           </div>
