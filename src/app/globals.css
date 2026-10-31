@@ -9,7 +9,7 @@
 .wrap{width:min(var(--max),calc(100% - 64px));margin:auto}
 
 /* Header */
-header{height:86px;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(8,9,13,.72);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+header{height:86px;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255, 255, 255, 0);background:rgba(8, 9, 13, 0);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 .navbar{height:100%;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:12px;font:600 22px Manrope,sans-serif;letter-spacing:-.7px}
 .logo{height:42px;width:auto;object-fit:contain;filter:drop-shadow(0 0 10px #dce5ff55)}
