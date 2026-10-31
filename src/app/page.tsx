@@ -6,7 +6,7 @@ import Image from "next/image";
 import Lenis from "lenis";
 
 const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.2.0/Aether-Setup-1.2.0.exe";
-const SOURCE_URL = "https://github.com/for-tristan/aether-browser";
+const SOURCE_URL = "https://github.com/for-tristan/Aether-Browser-Win";
 
 const features = [
   { icon: "\u2727", title: "Clarity by design", desc: "A clean, considered interface that keeps the web at the center and distractions out of your way." },
