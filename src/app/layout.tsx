@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const metadata: Metadata = {
 
   title: "Aether Browser",
   description: "A faster, cleaner and more private browsing experience. Built on Chromium.",
   icons: {
-    icon: "/favicon-32.png",
-    shortcut: "/favicon-32.png",
-    apple: "/apple-touch-icon.png",
+    icon: `${BASE}/favicon-32.png`,
+    shortcut: `${BASE}/favicon-32.png`,
+    apple: `${BASE}/apple-touch-icon.png`,
   },
 };
 
