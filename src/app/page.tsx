@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import Lenis from "lenis";
 
-const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.2.0/Aether-Setup-1.2.0.exe";
+const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.3.0/Aether-Setup-1.3.0.exe";
 const SOURCE_URL = "https://github.com/for-tristan/Aether-Browser-Win";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const LOGO = `${BASE}/aether-logo.png`;
