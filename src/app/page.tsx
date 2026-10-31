@@ -409,7 +409,7 @@ export default function Home() {
               </a>
               <div className="os-list">
                 <span>Windows 10/11</span>
-                <span>v1.2.0</span>
+                <span>v1.3.0</span>
               </div>
             </motion.div>
           </div>
