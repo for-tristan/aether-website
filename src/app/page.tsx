@@ -55,13 +55,9 @@ export default function Home() {
       <header>
         <div className="wrap navbar">
           <a className="brand" href="#home" aria-label="Aether home">
-<<<<<<< HEAD
             <Image src="/aether-logo.png" alt="Aether" width={42} height={53} className="logo" priority />
             
-=======
-            <Image src={LOGO} alt="Aether" width={42} height={53} className="logo" priority />
-            Aether
->>>>>>> cde1a5454b70c774dc17376d590b2fd2dd1c2264
+          
           </a>
           <nav className={`navlinks ${menuOpen ? "mobile-open" : ""}`}>
             <a href="#features" onClick={() => setMenuOpen(false)}>Features</a>
@@ -135,13 +131,7 @@ export default function Home() {
                   <div className="toolbar-right"><span>&#9734;</span><span>&#9776;</span></div>
                 </div>
                 <div className="browser-screen">
-<<<<<<< HEAD
                   <Image src="/aether-logo.png" alt="Aether" width={115} height={146} className="screen-logo" />
-=======
-                  <div className="screen-glow" />
-                  <div className="screen-wave" />
-                  <Image src={LOGO} alt="Aether" width={115} height={146} className="screen-logo" />
->>>>>>> cde1a5454b70c774dc17376d590b2fd2dd1c2264
                 </div>
               </div>
               <div className="device-side" />
