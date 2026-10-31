@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
+import Lenis from "lenis";
 
 const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.2.0/Aether-Setup-1.2.0.exe";
 const SOURCE_URL = "https://github.com/for-tristan/aether-browser";
+
 const features = [
   { icon: "\u2727", title: "Clarity by design", desc: "A clean, considered interface that keeps the web at the center and distractions out of your way." },
   { icon: "\u2301", title: "Fluid by nature", desc: "Move between pages and tabs with a browsing experience designed to feel seamless." },
-  { icon: "\u26E8", title: "Privacy in mind", desc: "Blocks 150+ ad and tracker domains. Strips tracking cookies. Prevents referrer leakage. Sends DNT and GPC headers on every request." },
-  { icon: "\u2318", title: "Tools within reach", desc: "Encrypted password manager, task manager, download manager with pause and resume, and find-in-page with regex support." },
+  { icon: "\u26E8", title: "Privacy in mind", desc: "Blocks 150+ ad and tracker domains. Strips tracking cookies. Prevents referrer leakage." },
+  { icon: "\u2318", title: "Tools within reach", desc: "Password manager, task manager, download manager with pause and resume, and find-in-page with regex support." },
 ];
 
 const stats = [
@@ -32,14 +34,29 @@ export default function Home() {
   const heroScale = useTransform(scrollYProgress, [0, 0.12], [1, 0.95]);
 
   const featuresRef = useRef(null);
-  const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
+  const featuresInView = useInView(featuresRef, { margin: "-100px" });
+
+  // Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
 
   return (
     <>
       <div className="page-glow" />
       <div className="noise" />
 
-      {/* Header — logo + name left, nav links center, download + github right */}
+      {/* Header */}
       <header>
         <div className="wrap navbar">
           <a className="brand" href="#home" aria-label="Aether home">
@@ -136,7 +153,7 @@ export default function Home() {
           </motion.div>
         </motion.section>
 
-        {/* Features — staggered scroll-in with alternating layout */}
+        {/* Features */}
         <section className="section" id="features" ref={featuresRef}>
           <div className="wrap">
             <motion.div
@@ -150,7 +167,6 @@ export default function Home() {
               <p>Aether brings your everyday browsing into focus with a thoughtful experience that feels fast, calm and effortless.</p>
             </motion.div>
 
-            {/* Alternating feature rows instead of boring grid */}
             <div className="feature-rows">
               {features.map((f, i) => (
                 <motion.div
@@ -158,7 +174,7 @@ export default function Home() {
                   className={`feature-row ${i % 2 === 1 ? "reverse" : ""}`}
                   initial={{ opacity: 0, x: i % 2 === 1 ? 60 : -60 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
+                  viewport={{ margin: "-80px" }}
                   transition={{ duration: 0.7, ease: [0.2, 0.7, 0.2, 1] }}
                 >
                   <div className="feature-visual">
@@ -175,13 +191,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Privacy — full-width immersive section */}
+        {/* Privacy */}
         <section className="section privacy-section" id="privacy">
           <motion.div
             className="privacy-bg"
             initial={{ scale: 1.1, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{}}
             transition={{ duration: 1.2, ease: "easeOut" }}
           />
           <div className="wrap">
@@ -189,7 +205,7 @@ export default function Home() {
               className="privacy-content"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ margin: "-100px" }}
               transition={{ duration: 0.8 }}
             >
               <div className="kicker">Your web, your rules</div>
@@ -199,7 +215,7 @@ export default function Home() {
                   className="privacy-item"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{}}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -210,34 +226,34 @@ export default function Home() {
                   className="privacy-item"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{}}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                   <h4>Encrypted Passwords</h4>
-                  <p>Local XOR encryption with autofill. No cloud sync. Your credentials never leave your device.</p>
+                  <p>Local encryption with autofill. No cloud sync. Your credentials never leave your device.</p>
                 </motion.div>
                 <motion.div
                   className="privacy-item"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{}}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
                   <h4>Anti-Fingerprinting</h4>
-                  <p>Canvas noise, WebGL spoofing, navigator overrides, audio distortion, timezone masking, WebRTC IP leak prevention.</p>
+                  <p>Protects against canvas, WebGL, audio, and timezone fingerprinting. You blend in with the crowd.</p>
                 </motion.div>
                 <motion.div
                   className="privacy-item"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{}}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
                   <div className="privacy-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                  <h4>DNT + GPC Signals</h4>
-                  <p>Do Not Track and Global Privacy Control headers sent on every request. Third-party cookies stripped.</p>
+                  <h4>Do Not Track</h4>
+                  <p>Tracking protection signals sent on every request. Third-party cookies stripped automatically.</p>
                 </motion.div>
               </div>
               <a className="text-link" href="#download">Discover Aether <span>&#8599;</span></a>
@@ -252,7 +268,7 @@ export default function Home() {
               className="section-head"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
               <div className="kicker">Stay in your flow</div>
@@ -266,7 +282,7 @@ export default function Home() {
                   className="stat"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{}}
                   transition={{ duration: 0.5, delay: i * 0.15, ease: [0.34, 1.56, 0.64, 1] }}
                 >
                   <strong>{s.strong}</strong>
@@ -284,7 +300,7 @@ export default function Home() {
               className="download-panel"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ margin: "-100px" }}
               transition={{ duration: 0.7 }}
             >
               <div className="kicker">Your next browser is here</div>
