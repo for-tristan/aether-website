@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
 
-  title: "Aether \u2014 Browse beyond limits",
+  title: "Aether Browser",
   description: "A faster, cleaner and more private browsing experience. Built on Chromium.",
   icons: {
     icon: "/favicon-32.png",

@@ -54,7 +54,7 @@ export default function Home() {
         <div className="wrap navbar">
           <a className="brand" href="#home" aria-label="Aether home">
             <Image src="/aether-logo.png" alt="Aether" width={42} height={53} className="logo" priority />
-            Aether
+            
           </a>
           <nav className={`navlinks ${menuOpen ? "mobile-open" : ""}`}>
             <a href="#features" onClick={() => setMenuOpen(false)}>Features</a>
@@ -116,26 +116,18 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.2, 0.7, 0.2, 1] }}
           >
-            <div className="orb one" />
-            <div className="orb two" />
             <div className="device-stage">
               <div className="device-shadow" />
               <div className="browser">
                 <div className="browser-top">
-                  <div className="traffic"><i /><i /><i /></div>
                   <div className="tab">New Tab <span>&times;</span></div>
-                  <span className="tabplus">+</span>
                 </div>
                 <div className="toolbar">
-                  <span className="ico">&#8249;</span>
-                  <span className="ico">&#8250;</span>
-                  <span className="ico">&#8635;</span>
+                 
                   <div className="address">&#8981; &nbsp; Search with Aether...</div>
-                  <div className="toolbar-right"><span>&#9734;</span><span>&#9635;</span><span>&#9776;</span></div>
+                  <div className="toolbar-right"><span>&#9734;</span><span>&#9776;</span></div>
                 </div>
                 <div className="browser-screen">
-                  <div className="screen-glow" />
-                  <div className="screen-wave" />
                   <Image src="/aether-logo.png" alt="Aether" width={115} height={146} className="screen-logo" />
                 </div>
               </div>
@@ -156,7 +148,6 @@ export default function Home() {
               variants={fadeUp}
               transition={{ duration: 0.6 }}
             >
-              <div className="kicker">What's inside</div>
               <h2>Built for the way<br />you actually browse.</h2>
               <p>Four pillars, one seamless experience. Every part of Aether works together to keep things fast, private and effortless.</p>
             </motion.div>
@@ -170,7 +161,7 @@ export default function Home() {
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
               >
-                <div className="bento-num">01</div>
+                <div className="bento-num"></div>
                 <div className="bento-scene scene-clarity">
                   <div className="mini-browser">
                     <div className="mini-bar"><i /><i /><i /></div>
@@ -184,7 +175,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="bento-text">
-                  <span className="bento-tag">Interface</span>
+                  <span className="bento-tag"></span>
                   <h3>Clarity by design</h3>
                   <p>A clean, considered interface that keeps the web at the center and distractions out of your way.</p>
                 </div>
@@ -198,7 +189,7 @@ export default function Home() {
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}
               >
-                <div className="bento-num">02</div>
+                <div className="bento-num"></div>
                 <div className="bento-scene scene-fluid">
                   <div className="flow-path" />
                   <div className="flow-dot d1" />
@@ -206,7 +197,7 @@ export default function Home() {
                   <div className="flow-dot d3" />
                 </div>
                 <div className="bento-text">
-                  <span className="bento-tag">Motion</span>
+                  <span className="bento-tag"></span>
                   <h3>Fluid by nature</h3>
                   <p>Move between pages and tabs with a browsing experience designed to feel seamless.</p>
                 </div>
@@ -220,7 +211,7 @@ export default function Home() {
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0.7, 0.2, 1] }}
               >
-                <div className="bento-num">03</div>
+                <div className="bento-num"></div>
                 <div className="bento-scene scene-privacy">
                   <div className="pulse-ring r1" />
                   <div className="pulse-ring r2" />
@@ -229,7 +220,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="bento-text">
-                  <span className="bento-tag">Protection</span>
+                  <span className="bento-tag"></span>
                   <h3>Privacy in mind</h3>
                   <p>Blocks 150+ ad and tracker domains. Strips tracking cookies. Prevents referrer leakage.</p>
                 </div>
@@ -243,7 +234,7 @@ export default function Home() {
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.2, 0.7, 0.2, 1] }}
               >
-                <div className="bento-num">04</div>
+                <div className="bento-num"></div>
                 <div className="bento-scene scene-tools">
                   <div className="tool-chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="7" cy="14" r="4"/><path d="M10.5 12 21 2m-4 2 3 3"/></svg></div>
                   <div className="tool-chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
@@ -251,9 +242,9 @@ export default function Home() {
                   <div className="tool-chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
                 </div>
                 <div className="bento-text">
-                  <span className="bento-tag">Built-in</span>
+                  <span className="bento-tag"></span>
                   <h3>Tools within reach</h3>
-                  <p>Password manager, task manager, download manager with pause and resume, and find-in-page with regex support.</p>
+                  <p>Password manager, task manager, download manager and find-in-page with regex support.</p>
                 </div>
               </motion.div>
             </div>
@@ -278,9 +269,9 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <div className="privacy-head">
-                <div className="kicker">Always on, always yours</div>
+                <div className="kicker"></div>
                 <h2>Privacy, actively<br />defended.</h2>
-                <p>While you browse, Aether is quietly working &mdash; blocking, encrypting, and obscuring in real time, so you don't have to think about it.</p>
+                <p>While you browse, Aether is quietly working blocking, encrypting, and obscuring in real time, so you don't have to think about it.</p>
               </div>
 
               <div className="privacy-console">
@@ -320,7 +311,6 @@ export default function Home() {
                       <h4>Tracker Blocking</h4>
                       <p>150+ ad and tracker domains blocked at the network level. Tracking parameters stripped from URLs.</p>
                     </div>
-                    <div className="module-status"><span className="status-dot" /><span className="status-label">Active</span></div>
                   </motion.div>
                   <motion.div
                     className="module"
@@ -334,7 +324,6 @@ export default function Home() {
                       <h4>Encrypted Passwords</h4>
                       <p>Local encryption with autofill. No cloud sync. Your credentials never leave your device.</p>
                     </div>
-                    <div className="module-status"><span className="status-dot" /><span className="status-label">Active</span></div>
                   </motion.div>
                   <motion.div
                     className="module"
@@ -348,7 +337,6 @@ export default function Home() {
                       <h4>Anti-Fingerprinting</h4>
                       <p>Protects against canvas, WebGL, audio, and timezone fingerprinting. You blend in with the crowd.</p>
                     </div>
-                    <div className="module-status"><span className="status-dot" /><span className="status-label">Active</span></div>
                   </motion.div>
                   <motion.div
                     className="module"
@@ -362,7 +350,6 @@ export default function Home() {
                       <h4>Do Not Track</h4>
                       <p>Tracking protection signals sent on every request. Third-party cookies stripped automatically.</p>
                     </div>
-                    <div className="module-status"><span className="status-dot" /><span className="status-label">Active</span></div>
                   </motion.div>
                 </div>
               </div>
@@ -382,7 +369,6 @@ export default function Home() {
               viewport={{ margin: "-100px", once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="kicker">Stay in your flow</div>
               <h2>Less friction.<br />More momentum.</h2>
               <p>From the first tab to the last, Aether is designed around a smoother, more focused browsing rhythm.</p>
             </motion.div>
@@ -414,7 +400,6 @@ export default function Home() {
               viewport={{ margin: "-100px", once: true }}
               transition={{ duration: 0.7 }}
             >
-              <div className="kicker">Your next browser is here</div>
               <h2>Make room for Aether.</h2>
               <p>Step into a cleaner, more considered browsing experience. Free, with automatic updates.</p>
               <a className="button" href={DOWNLOAD_URL} target="_blank" rel="noopener">
