@@ -69,7 +69,7 @@ h2{font:500 clamp(36px,5vw,58px)/1.08 Manrope,sans-serif;letter-spacing:-.065em;
 
 /* Features — bento grid with mini scenes */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:300px 300px 240px;gap:16px}
-.bento-cell{position:relative;border:1px solid var(--line);border-radius:20px;padding:30px;overflow:hidden;background:linear-gradient(145deg,#13161f,#0c0e15);transition:border-color .35s ease,box-shadow .35s ease;display:flex;flex-direction:column}
+.bento-cell{position:relative;border:1px solid var(--line);border-radius:20px;padding:30px;overflow:hidden;background:linear-gradient(145deg,#13161f,#0c0e15);transition:border-color .35s ease,box-shadow .35s ease;display:flex;flex-direction:column;will-change:transform,opacity;backface-visibility:hidden}
 .bento-cell:hover{border-color:#c6d4ff33;box-shadow:0 20px 50px #0005,0 0 30px #aabfff14}
 .bento-large{grid-column:1/span 7;grid-row:1/span 2}
 .bento-medium{grid-column:8/span 5}
@@ -156,7 +156,7 @@ h2{font:500 clamp(36px,5vw,58px)/1.08 Manrope,sans-serif;letter-spacing:-.065em;
 
 /* Privacy modules */
 .privacy-modules{display:flex;flex-direction:column;gap:14px}
-.module{display:grid;grid-template-columns:42px 1fr auto;gap:18px;align-items:center;padding:22px 24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#ffffff06,#ffffff01);transition:border-color .35s ease,background .35s ease}
+.module{display:grid;grid-template-columns:42px 1fr auto;gap:18px;align-items:center;padding:22px 24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#ffffff06,#ffffff01);transition:border-color .35s ease,background .35s ease;will-change:transform,opacity;backface-visibility:hidden}
 .module:hover{border-color:#c6d4ff33;background:linear-gradient(145deg,#ffffff0d,#ffffff03)}
 .module-icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:#dbe4ff;border:1px solid #d8e3ff24;background:linear-gradient(145deg,#c6d5ff14,#ffffff04)}
 .module-text h4{font:600 15px Manrope,sans-serif;letter-spacing:-.03em;margin-bottom:5px}

@@ -27,7 +27,7 @@ export default function Home() {
   const heroScale = useTransform(scrollYProgress, [0, 0.12], [1, 0.95]);
 
   const featuresRef = useRef(null);
-  const featuresInView = useInView(featuresRef, { margin: "-100px" });
+  const featuresInView = useInView(featuresRef, { margin: "-100px", once: true });
 
   // Lenis smooth scroll
   useEffect(() => {
@@ -166,7 +166,6 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-large"
                 initial={{ opacity: 0, y: 30 }}
-                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
@@ -195,7 +194,6 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-medium"
                 initial={{ opacity: 0, y: 30 }}
-                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}
@@ -218,7 +216,6 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-medium"
                 initial={{ opacity: 0, y: 30 }}
-                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0.7, 0.2, 1] }}
@@ -242,7 +239,6 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-wide"
                 initial={{ opacity: 0, y: 30 }}
-                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.2, 0.7, 0.2, 1] }}
@@ -315,7 +311,6 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
-                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 }}
@@ -330,7 +325,6 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
-                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -345,7 +339,6 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
-                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -360,7 +353,6 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
-                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
