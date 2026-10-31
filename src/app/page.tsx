@@ -7,6 +7,8 @@ import Lenis from "lenis";
 
 const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.2.0/Aether-Setup-1.2.0.exe";
 const SOURCE_URL = "https://github.com/for-tristan/Aether-Browser-Win";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const LOGO = `${BASE}/aether-logo.png`;
 
 const stats = [
   { strong: "150+", label: "Tracker domains blocked" },
@@ -53,7 +55,7 @@ export default function Home() {
       <header>
         <div className="wrap navbar">
           <a className="brand" href="#home" aria-label="Aether home">
-            <Image src="/aether-logo.png" alt="Aether" width={42} height={53} className="logo" priority />
+            <Image src={LOGO} alt="Aether" width={42} height={53} className="logo" priority />
             Aether
           </a>
           <nav className={`navlinks ${menuOpen ? "mobile-open" : ""}`}>
@@ -136,7 +138,7 @@ export default function Home() {
                 <div className="browser-screen">
                   <div className="screen-glow" />
                   <div className="screen-wave" />
-                  <Image src="/aether-logo.png" alt="Aether" width={115} height={146} className="screen-logo" />
+                  <Image src={LOGO} alt="Aether" width={115} height={146} className="screen-logo" />
                 </div>
               </div>
               <div className="device-side" />
