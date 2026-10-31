@@ -166,8 +166,9 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-large"
                 initial={{ opacity: 0, y: 30 }}
+                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-60px" }}
+                viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <div className="bento-num">01</div>
@@ -194,8 +195,9 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-medium"
                 initial={{ opacity: 0, y: 30 }}
+                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-60px" }}
+                viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <div className="bento-num">02</div>
@@ -216,8 +218,9 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-medium"
                 initial={{ opacity: 0, y: 30 }}
+                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-60px" }}
+                viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <div className="bento-num">03</div>
@@ -239,8 +242,9 @@ export default function Home() {
               <motion.div
                 className="bento-cell bento-wide"
                 initial={{ opacity: 0, y: 30 }}
+                whileHover={{ y: -4 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-60px" }}
+                viewport={{ margin: "-60px", once: true }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <div className="bento-num">04</div>
@@ -266,7 +270,7 @@ export default function Home() {
             className="privacy-bg"
             initial={{ scale: 1.1, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{}}
+            viewport={{ once: true }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           />
           <div className="wrap">
@@ -274,7 +278,7 @@ export default function Home() {
               className="privacy-content"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ margin: "-100px" }}
+              viewport={{ margin: "-100px", once: true }}
               transition={{ duration: 0.8 }}
             >
               <div className="privacy-head">
@@ -311,8 +315,9 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
+                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{}}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
                     <div className="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -325,8 +330,9 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
+                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{}}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
                     <div className="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
@@ -339,8 +345,9 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
+                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{}}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
                     <div className="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
@@ -353,8 +360,9 @@ export default function Home() {
                   <motion.div
                     className="module"
                     initial={{ opacity: 0, x: 30 }}
+                    whileHover={{ x: -4 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{}}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
                     <div className="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
@@ -379,7 +387,7 @@ export default function Home() {
               className="section-head"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ margin: "-100px" }}
+              viewport={{ margin: "-100px", once: true }}
               transition={{ duration: 0.6 }}
             >
               <div className="kicker">Stay in your flow</div>
@@ -393,7 +401,7 @@ export default function Home() {
                   className="stat"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{}}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.15, ease: [0.34, 1.56, 0.64, 1] }}
                 >
                   <strong>{s.strong}</strong>
@@ -411,7 +419,7 @@ export default function Home() {
               className="download-panel"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ margin: "-100px" }}
+              viewport={{ margin: "-100px", once: true }}
               transition={{ duration: 0.7 }}
             >
               <div className="kicker">Your next browser is here</div>
