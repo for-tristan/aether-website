@@ -208,7 +208,6 @@ export default function Home() {
               viewport={{ margin: "-100px" }}
               transition={{ duration: 0.8 }}
             >
-              <div className="kicker">Your web, your rules</div>
               <h2>A quieter kind of privacy.</h2>
               <div className="privacy-grid">
                 <motion.div
