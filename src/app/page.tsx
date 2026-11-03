@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import Lenis from "lenis";
 
-const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.5.0/AetherSetup-v1.5.0.exe";
+const DOWNLOAD_URL = "https://github.com/for-tristan/Aether-Browser-Win/releases/download/v1.6.0/Aether-Setup-1.6.0.exe";
 const SOURCE_URL = "https://github.com/for-tristan/Aether-Browser-Win";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const LOGO = `${BASE}/aether-logo.png`;
@@ -409,7 +409,7 @@ export default function Home() {
               </a>
               <div className="os-list">
                 <span>Windows 10/11</span>
-                <span>v1.5.0</span>
+                <span>v1.6.0</span>
               </div>
             </motion.div>
           </div>
